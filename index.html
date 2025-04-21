@@ -3,171 +3,945 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maahi Mishra - Web Developer & Cybersecurity Engineer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <title>Your Portfolio</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary-color: #4070f4;
+            --secondary-color: #0e2431;
+            --white-color: #fff;
+            --hover-color: #265df2;
+            --gray-color: #505050;
+            --light-gray: #f7f7f7;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: var(--secondary-color);
+            background-color: var(--white-color);
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--hover-color);
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: var(--white-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 32px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .menu-btn {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 60px;
+        }
+
+        .hero-content {
+            width: 50%;
+        }
+
+        .hero-image {
+            width: 50%;
+            text-align: right;
+        }
+
+        .hero-image img {
+            width: 80%;
+            border-radius: 50%;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .hero-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero-title span {
+            color: var(--primary-color);
+        }
+
+        .hero-description {
+            font-size: 18px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .social-icons {
+            display: flex;
+            margin-top: 30px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            border-radius: 50%;
+            margin-right: 15px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--hover-color);
+            transform: translateY(-5px);
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .about-image {
+            width: 40%;
+        }
+
+        .about-image img {
+            width: 90%;
+            border-radius: 10px;
+        }
+
+        .about-text {
+            width: 60%;
+            padding-left: 40px;
+        }
+
+        .about-text h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .about-text p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .tab-titles {
+            display: flex;
+            margin: 20px 0 30px;
+        }
+
+        .tab-link {
+            margin-right: 30px;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .tab-link::after {
+            content: '';
+            width: 0;
+            height: 3px;
+            background: var(--primary-color);
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            transition: width 0.3s;
+        }
+
+        .tab-link.active-link::after {
+            width: 100%;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active-tab {
+            display: block;
+        }
+
+        .tab-content ul li {
+            list-style: none;
+            margin: 15px 0;
+        }
+
+        .tab-content ul li span {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        /* Services Section */
+        .services {
+            background-color: var(--light-gray);
+        }
+
+        .services-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-gap: 40px;
+            margin-top: 50px;
+        }
+
+        .service-item {
+            background-color: var(--white-color);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+            transition: all 0.3s ease;
+        }
+
+        .service-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .service-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .service-description {
+            line-height: 1.6;
+        }
+
+        /* Portfolio Section */
+        .portfolio-filter {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            background-color: var(--white-color);
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 6px;
+            margin: 0 10px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+        }
+
+        .portfolio-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-gap: 30px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(64, 112, 244, 0.8);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay h3 {
+            color: var(--white-color);
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .portfolio-overlay a {
+            color: var(--white-color);
+            text-decoration: none;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .portfolio-overlay a:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--light-gray);
+        }
+
+        .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .contact-info {
+            width: 40%;
+        }
+
+        .contact-form {
+            width: 60%;
+            padding-left: 40px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-size: 20px;
+        }
+
+        .contact-text h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .contact-text p {
+            color: var(--gray-color);
+        }
+
+        .contact-form form {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 20px;
+        }
+
+        .form-group:nth-child(3), .form-group:nth-child(4) {
+            grid-column: 1 / span 2;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            outline: none;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--primary-color);
+        }
+
+        .form-group textarea {
+            resize: none;
+            height: 150px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: var(--white-color);
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .footer-content p {
+            margin-bottom: 15px;
+        }
+
+        .footer-social {
+            margin-bottom: 15px;
+        }
+
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white-color);
+            border-radius: 50%;
+            margin: 0 10px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 992px) {
+            .hero-content, .hero-image {
+                width: 100%;
+                text-align: center;
+            }
+
+            .hero {
+                flex-direction: column-reverse;
+                justify-content: center;
+            }
+
+            .hero-image img {
+                width: 50%;
+                margin-bottom: 50px;
+            }
+
+            .social-icons {
+                justify-content: center;
+            }
+
+            .about-image, .about-text {
+                width: 100%;
+                text-align: center;
+            }
+
+            .about-text {
+                padding-left: 0;
+                margin-top: 40px;
+            }
+
+            .tab-titles {
+                justify-content: center;
+            }
+
+            .contact-info, .contact-form {
+                width: 100%;
+            }
+
+            .contact-form {
+                padding-left: 0;
+                margin-top: 50px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .navbar {
+                padding: 15px 0;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100vh;
+                background-color: var(--white-color);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: left 0.3s ease;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 20px 0;
+            }
+
+            .close-btn {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                font-size: 24px;
+                cursor: pointer;
+            }
+
+            .hero-title {
+                font-size: 36px;
+            }
+
+            .hero-image img {
+                width: 70%;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .contact-form form {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group:nth-child(1), .form-group:nth-child(2), .form-group:nth-child(3), .form-group:nth-child(4) {
+                grid-column: 1;
+            }
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
 </head>
 <body>
+    <!-- Header -->
     <header>
-        <div class="header-content">
-            <h1>Maahi Mishra</h1>
-            <p>Web Developer & Cybersecurity Engineer</p>
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
+        <div class="container">
+            <nav class="navbar flex">
+                <a href="#" class="logo">Portfolio</a>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li class="close-btn"><i class="fas fa-times"></i></li>
+                </ul>
+                <div class="menu-btn"><i class="fas fa-bars"></i></div>
+            </nav>
         </div>
     </header>
-    
-    <nav id="navbar">
-        <ul>
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
-    
-    <div class="container">
-        <section id="hero">
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container flex">
             <div class="hero-content">
-                <h2>Hello, I'm <span class="highlight">Maahi Mishra</span></h2>
-                <h3>I create secure web solutions</h3>
-                <p>I'm a passionate web developer and cybersecurity expert specializing in building secure, user-friendly digital experiences that protect your data while delivering exceptional performance.</p>
-                <div class="cta-buttons">
-                    <a href="portfolio.html" class="cta-button">View My Work</a>
-                    <a href="contact.html" class="cta-button secondary">Get In Touch</a>
+                <p class="hero-subtitle">Hello, I'm</p>
+                <h1 class="hero-title">Your <span>Name</span></h1>
+                <p class="hero-description">A passionate web developer specializing in creating beautiful and functional websites. I combine creativity with technical skills to deliver exceptional digital experiences.</p>
+                <a href="#contact" class="btn">Contact Me</a>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
             <div class="hero-image">
-                <img src="images/profile.jpg" alt="Maahi Mishra" onerror="this.src='https://via.placeholder.com/500x600'">
+                <img src="/api/placeholder/400/400" alt="Profile Image">
             </div>
-        </section>
-        
-        <section id="featured-works">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/project1.jpg" alt="E-commerce Security Project" onerror="this.src='https://via.placeholder.com/400x300'">
-                    </div>
-                    <div class="project-info">
-                        <h3>E-commerce Security Solution</h3>
-                        <p>A comprehensive security system for online stores with payment protection and data encryption.</p>
-                        <div class="project-tags">
-                            <span>React.js</span>
-                            <span>Node.js</span>
-                            <span>Security</span>
-                        </div>
-                        <a href="portfolio.html" class="project-link">View Details</a>
-                    </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="/api/placeholder/400/500" alt="About Image">
                 </div>
-                
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/project2.jpg" alt="Portfolio Website" onerror="this.src='https://via.placeholder.com/400x300'">
+                <div class="about-text">
+                    <h3>I'm a Web Developer with a passion for creating beautiful and functional websites</h3>
+                    <p>With over 5 years of experience in web development, I specialize in creating responsive and user-friendly websites. My goal is to transform ideas into powerful digital solutions that help businesses grow online.</p>
+                    <p>I am proficient in various programming languages and frameworks including HTML, CSS, JavaScript, React, and Node.js. I am constantly learning and adapting to new technologies to deliver the best results for my clients.</p>
+
+                    <div class="tab-titles">
+                        <p class="tab-link active-link" onclick="openTab('skills')">Skills</p>
+                        <p class="tab-link" onclick="openTab('experience')">Experience</p>
+                        <p class="tab-link" onclick="openTab('education')">Education</p>
                     </div>
-                    <div class="project-info">
-                        <h3>Responsive Portfolio Template</h3>
-                        <p>A clean, modern portfolio website template with optimized performance and accessibility.</p>
-                        <div class="project-tags">
-                            <span>HTML5</span>
-                            <span>CSS3</span>
-                            <span>JavaScript</span>
-                        </div>
-                        <a href="portfolio.html" class="project-link">View Details</a>
+
+                    <div class="tab-content active-tab" id="skills">
+                        <ul>
+                            <li><span>UI/UX Design</span><br>Designing Web/App interfaces</li>
+                            <li><span>Web Development</span><br>Building responsive websites</li>
+                            <li><span>App Development</span><br>Creating mobile applications</li>
+                        </ul>
                     </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/project3.jpg" alt="Security Dashboard" onerror="this.src='https://via.placeholder.com/400x300'">
+                    <div class="tab-content" id="experience">
+                        <ul>
+                            <li><span>2021 - Present</span><br>Senior Web Developer at XYZ Company</li>
+                            <li><span>2018 - 2021</span><br>Frontend Developer at ABC Agency</li>
+                            <li><span>2016 - 2018</span><br>Web Designer at DEF Studio</li>
+                        </ul>
                     </div>
-                    <div class="project-info">
-                        <h3>Security Monitoring Dashboard</h3>
-                        <p>Real-time security monitoring tool for tracking and analyzing potential threats.</p>
-                        <div class="project-tags">
-                            <span>MERN Stack</span>
-                            <span>WebSockets</span>
-                            <span>Data Viz</span>
-                        </div>
-                        <a href="portfolio.html" class="project-link">View Details</a>
+                    <div class="tab-content" id="education">
+                        <ul>
+                            <li><span>2016</span><br>Bachelor in Computer Science from University</li>
+                            <li><span>2014</span><br>Web Development Certification from Institute</li>
+                            <li><span>2012</span><br>High School Diploma with Computer Science</li>
+                        </ul>
                     </div>
                 </div>
             </div>
-            <div class="center">
-                <a href="portfolio.html" class="cta-button">View All Projects</a>
-            </div>
-        </section>
-        
-        <section id="services-preview">
-            <h2 class="section-title">Services I Offer</h2>
-            <div class="services-grid">
-                <div class="service-card">
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">My Services</h2>
+            <div class="services-list">
+                <div class="service-item">
                     <div class="service-icon">
                         <i class="fas fa-code"></i>
                     </div>
-                    <h3>Web Development</h3>
-                    <p>Custom-built responsive websites and web applications using modern technologies and best practices.</p>
+                    <h3 class="service-title">Web Development</h3>
+                    <p class="service-description">I create responsive and user-friendly websites using the latest technologies that help businesses establish their online presence.</p>
                 </div>
-                
-                <div class="service-card">
+                <div class="service-item">
                     <div class="service-icon">
-                        <i class="fas fa-shield-alt"></i>
+                        <i class="fas fa-paint-brush"></i>
                     </div>
-                    <h3>Cybersecurity</h3>
-                    <p>Security audits, vulnerability assessments, and implementation of robust security measures.</p>
+                    <h3 class="service-title">UI/UX Design</h3>
+                    <p class="service-description">I design intuitive and engaging user interfaces that provide exceptional user experiences and increase conversion rates.</p>
                 </div>
-                
-                <div class="service-card">
+                <div class="service-item">
                     <div class="service-icon">
-                        <i class="fas fa-palette"></i>
+                        <i class="fas fa-mobile-alt"></i>
                     </div>
-                    <h3>UI/UX Design</h3>
-                    <p>User-centric design solutions that enhance usability, accessibility, and visual appeal.</p>
+                    <h3 class="service-title">App Development</h3>
+                    <p class="service-description">I develop cross-platform mobile applications that are fast, responsive, and provide a seamless user experience.</p>
                 </div>
             </div>
-            <div class="center">
-                <a href="services.html" class="cta-button">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <h2 class="section-title">My Portfolio</h2>
+            <div class="portfolio-filter">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="app">App</button>
+                <button class="filter-btn" data-filter="design">Design</button>
             </div>
-        </section>
-        
-        <section id="contact-preview">
+            <div class="portfolio-gallery">
+                <div class="portfolio-item" data-category="web">
+                    <img src="/api/placeholder/400/300" alt="Portfolio Item">
+                    <div class="portfolio-overlay">
+                        <h3>Web Project 1</h3>
+                        <a href="#">View Details</a>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="app">
+                    <img src="/api/placeholder/400/300" alt="Portfolio Item">
+                    <div class="portfolio-overlay">
+                        <h3>App Project 1</h3>
+                        <a href="#">View Details</a>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="design">
+                    <img src="/api/placeholder/400/300" alt="Portfolio Item">
+                    <div class="portfolio-overlay">
+                        <h3>Design Project 1</h3>
+                        <a href="#">View Details</a>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="web">
+                    <img src="/api/placeholder/400/300" alt="Portfolio Item">
+                    <div class="portfolio-overlay">
+                        <h3>Web Project 2</h3>
+                        <a href="#">View Details</a>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="app">
+                    <img src="/api/placeholder/400/300" alt="Portfolio Item">
+                    <div class="portfolio-overlay">
+                        <h3>App Project 2</h3>
+                        <a href="#">View Details</a>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="design">
+                    <img src="/api/placeholder/400/300" alt="Portfolio Item">
+                    <div class="portfolio-overlay">
+                        <h3>Design Project 2</h3>
+                        <a href="#">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Me</h2>
             <div class="contact-content">
-                <h2>Let's Work Together</h2>
-                <p>Have a project in mind? Looking for a web developer or cybersecurity consultant? I'd love to hear from you!</p>
-                <a href="contact.html" class="cta-button">Contact Me</a>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Location</h4>
+                            <p>Your City, Country</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <p>your.email@example.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Phone</h4>
+                            <p>+123 456 7890</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Your Message" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn">Send Message</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </section>
-    </div>
-    
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="portfolio.html">Portfolio</a>
-                <a href="services.html">Services</a>
-                <a href="blog.html">Blog</a>
-                <a href="contact.html">Contact</a>
+        <div class="container">
+            <div class="footer-content">
+                <p>© 2025 Your Name. All Rights Reserved.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
             </div>
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-            <p>&copy; 2024 Maahi Mishra. All rights reserved.</p>
         </div>
     </footer>
-    
-    <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
-    
-    <script src="script.js"></script>
+
+    <script>
+        // Toggle Menu
+        const menuBtn = document.querySelector('.menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        const closeBtn = document.querySelector('.close-btn');
+
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.add('active');
+        });
+
+        closeBtn.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Tab Functionality
+        function openTab(tabName) {
+            const tabLinks = document.querySelectorAll('.tab-link');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabLinks.forEach(link => {
+                link.classList.remove('active-link');
+            });
+
+            tabContents.forEach(content => {
+                content.classList.remove('active-tab');
+            });
+
+            event.currentTarget.classList.add('active-link');
+            document.getElementById(tabName).classList.add('active-tab');
+        }
+
+        // Portfolio Filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Active button
+                filterBtns.forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                btn.classList.add('active');
+
+                // Filter items
+                const filter = btn.getAttribute('data-filter');
+                
+                portfolioItems.forEach(item => {
+                    const category = item.getAttribute('data-category');
+                    
+                    if (filter === 'all' || filter === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Sticky Header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            header.classList.toggle('sticky', window.scrollY > 0);
+        });
+    </script>
 </body>
 </html>
